@@ -26,7 +26,7 @@ SECRET_KEY = '%3-y)5lmgkv5^of*_hdmh1)_$(ab(lk2@4fk#4yg^&9e@%!!o1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -70,7 +70,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-            ],
+                ],
+            'libraries': {
+                'staticfiles': 'django.templatetags.static',
+                },
         },
     },
 ]
@@ -85,7 +88,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'licenses',
-        'HOST': '127.0.0.1',
+        'HOST': 'db',
         'USER': 'postgres',
         'PASSWORD': 'admin',
         'PORT': 5432

@@ -1,6 +1,6 @@
 """ Script to start background jobs """
 from apscheduler.schedulers.background import BackgroundScheduler
-from emailManager import emailer
+from license_emailing_api.emailManager import emailer
 
 
 def start():

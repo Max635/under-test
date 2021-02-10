@@ -13,13 +13,13 @@ import requests
 import psycopg2
 
 
-URL_ENDPOINT = 'http://127.0.0.1:8080/due-date/'
+URL_ENDPOINT = 'http://0.0.0.0:8080/due-date/'
 CONTACT_LIST_CSV_FILE = 'contact_list.csv'
 
 # Postgresql
 PSQL_USR = 'postgres'
 PSQL_PWD = 'admin'
-PSQL_HOST = '127.0.0.1'
+PSQL_HOST = 'db'
 PSQL_PORT = '5432'
 PSQL_DB = 'licenses'
 
@@ -131,7 +131,7 @@ def _execute_psql_copy(date_value, email_value):
 
 
 def _create_csv_and_sendmail(date_value, email_list):
-    for email in email_list:
+    for email_value in email_list:
         _execute_psql_copy(date_value, email_value)
         _send_emails()
 
