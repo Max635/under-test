@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <p>
+    <a href="{% url 'license_add' %}" class="btn btn-primary">Adicionar licença</a>
+  </p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>ID da Licença</th>
+        <th>Nome do Pacote</th>
+        <th>Tipo de Licença</th>
+        <th>Vencimento</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for customer in license %}
+      <tr>
+        <td>{{ customer.name }}</a></td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.license_code }}</td>
+        <td>{{ customer.package_name }}</td>
+        <td>{{ customer.license_type }}</td>
+        <td>{{ customer.license_due_date }}</td>
+      </tr>
+      {% empty %}
+      <tr class="table-active">
+        <td colspan="3">Sem dados de licença</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
