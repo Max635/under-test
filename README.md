@@ -1,4 +1,4 @@
-# under-test
+# Licenses Emailing App
 
 Front-end
 - license_emailing
