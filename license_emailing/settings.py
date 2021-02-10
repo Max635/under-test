@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework_swagger',
     'crispy_forms',
+    'license_emailing_api',
 ]
 
 
@@ -81,8 +82,12 @@ WSGI_APPLICATION = 'license_emailing.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'licenses',
+        'HOST': '127.0.0.1',
+        'USER': 'postgres',
+        'PASSWORD': 'admin',
+        'PORT': 5432
     }
 }
 
