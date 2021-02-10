@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import CustomerLicenseModel
 
-# Register your models here.
+
+class CustomerAdmin(admin.ModelAdmin):
+    fields = '__all__'
+
+admin.site.register(CustomerLicenseModel)
