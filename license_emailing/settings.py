@@ -42,9 +42,8 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework_swagger',
     'crispy_forms',
-    'license_emailing_api',
+    'license_emailing_api.apps.LicenseEmailingApiConfig',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
