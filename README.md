@@ -1,4 +1,4 @@
-# Licenses Emailing App
+## Licenses Emailing App
 
 Front-end
 - license_emailing
@@ -6,3 +6,11 @@ Front-end
 Back-end
 - license_emailing_api
 - emailManager
+
+
+
+### Instalação
+```sh
+$ pip install -r requirements.txt
+
+```
