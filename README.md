@@ -170,5 +170,5 @@ Após execução, o sistema ficará disponível em __http://0.0.0.0:8080/__
 
 <details>
   <summary> maxi635@hotmail.com </summary>
-  :sunglasses:
+    Maximiliano Hugo Chaile
 </details>
