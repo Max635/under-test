@@ -1,6 +1,6 @@
 ## Licenses Emailing App
 
-O projeto __"Licenses Emailing"__ visa disponibilizar uma ferramenta automâtica de notificações, por meio de email, respeito dos vencimentos das licenças adquiridas pelos clientes.
+O projeto __"Licenses Emailing"__ visa disponibilizar uma ferramenta automâtica de notificações, por meio de email, dos vencimentos das licenças adquiridas pelos clientes.
 Diariamente é feita uma requisição ao endpoint, consultando pelas licenças com a data atual de vencimento. Caso existirem, o sistema as informara ao time de vendas. Apenas um email por usuario sera enviado, contendo as informações da(s) licença(s) vencida(s).
 
 O serviço oferece uma interface para adicionar licenças. Além de ingressar os dados nome e email do cliente, também deverá ser indicado o nome do pacote e o tipo de licenciamento.
@@ -19,6 +19,7 @@ Uma vez atingido o período de uso, o sistema informará ao endereço de correo 
 O arquivo __config.py__ ubicado em __/license_emailing_api/emailManager/__ contêm as principais configurações.
 Atualmente o sistema utiliza uma conta de Gmail exclusiva para o envio dos emails.
 As configurações,
+
 
 - PASSWORD_EMAIL = 'license.test'
 - SENDER_EMAIL = 'license.emailing@gmail.com'
@@ -42,7 +43,7 @@ Caso seja necessário mudar o horario de consulta é preciso alterar na seguinte
 
 ## Alteração de data de consulta para teste
 
-O script de Python __emailer.py__ contém as configurações para o envio dos emails. A data de consulta é obtida por meio da execução do método __date.today()__
+__emailer.py__ contém as configurações para o envio dos emails. A data de consulta é obtida por meio da execução do método __date.today()__
 Para testar com otra data de vencimento é preciso alterar o argumento das funções __get_data_from_api()__ e __create_csv_and_sendmail__ dentro da função __init_emailing()__
 
 - > linha 111:  get_data_from_api('2021-06-10')
@@ -55,7 +56,7 @@ Feitas as alterações o sistema consultará pela data inserida manualmente e, c
 Baseado no Tipo de Licença escolhida, o sistema calculará o período de vigência das licenças.
 As configurações encontram-se no arquivo __models.py__ do aplicativo.
 Como mencionado anteriormente, o início do período é obtido assim que é gerado uma nova licença.
-As definições do cálculo dos prazos possuen o formato da seguinte expresão:
+Definições para o cálculo dos prazos possuen o formato da seguinte expresão:
 
 - __self.license_due_date = self.license_init_date + relativedelta(months=+4)__
 
@@ -70,7 +71,7 @@ As definições do cálculo dos prazos possuen o formato da seguinte expresão:
 
 ### Requisitos do sistema
 
-O arquivo requirements.txt contêm os frameworks e pacotes necessários para a executar o sistema. Foi utilizado, entre outros, os seguientes:
+O arquivo requirements.txt contêm os frameworks, livrarias e pacotes necessários para a executar o sistema. Foi utilizado, entre outros, os seguientes:
 
 - Django,
 - Django Rest Framework,
@@ -79,7 +80,7 @@ O arquivo requirements.txt contêm os frameworks e pacotes necessários para a e
 - Postgresql,
 - Psycopg2
 
-Caso não seja utilizada a imagem do Docker disponibilizada, os pacotes deverão ser instalados con a seguinte ordem:
+Caso não seja utilizada a imagem do Docker disponibilizada, os pacotes deverão ser instalados com o seguinte comando:
 
 ```sh
 $ pip install -r requirements.txt
@@ -87,7 +88,7 @@ $ pip install -r requirements.txt
 
 ### Estrutura
 
-Criaou-se um repositório contendo arquivos e configurações necessarias para rodar o aplicativo desde zero.
+Criou-se um repositório Git contendo arquivos e configurações necessarias para rodar o aplicativo desde zero.
 O aplicativo pode ser executado desde uma imagem conteinerizada Docker ou utilizando a estrutura de pastas e arquivos do Django.
 As pastas principais,
 
