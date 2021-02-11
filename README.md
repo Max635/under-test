@@ -43,11 +43,14 @@ Caso seja necessário mudar o horario de consulta é preciso alterar na seguinte
 
 ## Alteração de data de consulta para teste
 
-__emailer.py__ contém as configurações para o envio dos emails. A data de consulta é obtida por meio da execução do método __date.today()__
-Para testar com otra data de vencimento é preciso alterar o argumento das funções __get_data_from_api()__ e __create_csv_and_sendmail__ dentro da função __init_emailing()__
+__emailer.py__ contém as configurações para o envio dos emails. A data atual para consulta é obtida por meio da execução do método __date.today()__
+Para testar com otra data de vencimento é preciso alterar o valor da variável __today__ para uma data específica (formato 'yyyy-mm-dd')
 
-- > linha 111:  get_data_from_api('2021-06-10')
-- > linha 113:  create_csv_and_sendmail('2021-06-10', email_list)
+- > linha 111:  __today__ = date.today()
+
+Para consultar o endpoint com data '2021-06-15':
+
+__today__ = '2021-06-15'
 
 Feitas as alterações o sistema consultará pela data inserida manualmente e, caso tiver vencimentos, será gerado o email com o relatório dos mesmos.
 
