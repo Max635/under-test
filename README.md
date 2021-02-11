@@ -12,6 +12,7 @@ Dependendo da licença escolhida; quadrimensal, mensal ou semanal, será feito o
 
 Uma vez atingido o período de uso, o sistema informará ao endereço de correo eletrônico configurado.
 
+-----
 
 ### Configurações iniciais
 
@@ -30,9 +31,9 @@ A constante __VENDAS_EMAIL__ deberá ser configurada com o endereço de recebime
 A pasta __emailerManager__ contém os arquivos para a execução automatizada da extração e envio dos correios eletrônicos. Diariamente é executada uma consulta ao endpoint solicitando as datas de vencimiento do dia. Na configuração atual, a consulta é feita às oito horas.
 
 - __emailerManager__
--    _config.py_
--    _emailer.py_
--    _updater.py_
+    - _config.py_
+    - _emailer.py_
+    - _updater.py_
 
 O script de Python __updater.py__ contém a configuração do parámetro horário.
 Caso seja necessário mudar o horario de consulta é preciso alterar na seguinte linha o valor de __hour__:
@@ -49,6 +50,23 @@ Para testar com otra data de vencimento é preciso alterar o argumento das funç
 
 Feitas as alterações o sistema consultará pela data inserida manualmente e, caso tiver vencimentos, será gerado o email com o relatório dos mesmos.
 
+## Cálculo dos prazos de vencimento
+
+Baseado no Tipo de Licença escolhida, o sistema calculará o período de vigência das licenças.
+As configurações encontram-se no arquivo __models.py__ do aplicativo.
+Como mencionado anteriormente, o início do período é obtido assim que é gerado uma nova licença.
+As definições do cálculo dos prazos possuen o formato da seguinte expresão:
+
+- __self.license_due_date = self.license_init_date + relativedelta(months=+4)__
+
+- license_due_date = _data de vencimento da licença_
+- license_init_date = _data de início do período da licença_
+
+- relativedelta(months=+4) _para tipo de licença Quadrimensal._
+- relativedelta(months=+1) _para tipo de licença mensal._
+- relativedelta(weeks=1) _para tipo de licença semanal._
+
+-----
 
 ### Requisitos do sistema
 
@@ -126,3 +144,31 @@ Para buscar as licenças com vencimento na data _2021-06-10_
 Para persistir os dados,o sistema utiliza Postgresql.
 O arquivo __models.py__ contém a estrutura das tabelas e tipos de dados do banco.
 
+
+### Execução do sistema por meio da imagem Docker
+
+Os arquivos __Dockerfile__ e __docker-compose.yml__ contêm as configurações necessárias para a execução da sistema conteineirizada
+Para iniciar a imagem de Docker:
+
+```sh
+$ docker-compose up
+```
+Após execução, o sistema ficará disponível em __http://0.0.0.0:8080/__
+
+-----
+
+## Requisitos
+
+1. [x] Sitema desenvolvido utilizando __Python v3.x__
+2. [x] __Framework Django__ e __Django Rest Framework__
+3. [x] _O projeto pode ser iniciado com um único comando_, __docker-compose up__ 
+4. [x] _O projeto em execução pode ser acessado no navegador em_ __[docker host]:8080__
+5. [x] _O projeto deve ter o módulo administrador acessível em_ __[docker host]:8080/admin__
+6. [x] Uso de __Swagger__ para documentação da API.
+
+-----
+
+<details>
+  <summary> maxi635@hotmail.com </summary>
+  :sunglasses:
+</details>
