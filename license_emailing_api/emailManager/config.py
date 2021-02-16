@@ -12,7 +12,7 @@ PSQL_DB = 'licenses'
 
 # Gmail account
 SERVER = 'smtp.gmail.com:587'
-PASSWORD_EMAIL = 'license.test'
+PASSWORD_EMAIL = ''
 SENDER_EMAIL = 'license.emailing@gmail.com'
 VENDAS_EMAIL = ''
 SUBJECT = 'Vencimento de Licenças'
